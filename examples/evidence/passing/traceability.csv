@@ -1,0 +1,4 @@
+requirement,assertion_ids,covered
+LAB-01,TC-001.1;TC-002.1,True
+LAB-02,TC-001.2;TC-002.2,True
+LAB-03,TC-001.3;TC-002.3,True

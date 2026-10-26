@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "emv-certification-workbench"
+version = "1.0.0"
+description = "Synthetic BER-TLV pre-certification evidence and traceability workbench"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+
+[project.scripts]
+emv-workbench = "emv_workbench.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["emv_workbench*"]

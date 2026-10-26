@@ -1,0 +1,150 @@
+{
+  "tool_version": "1.0.0",
+  "synthetic": true,
+  "plan_sha256": "0ace09e56cd504a8acd43348125afb70c1322a47cf65734a05ec6eae4ed91cf0",
+  "scope": "Learning/pre-certification evidence only; not official certification",
+  "passed": false,
+  "summary": {
+    "cases": 2,
+    "passed": 1,
+    "failed": 1
+  },
+  "requirements": {
+    "LAB-01": "A single six-byte amount is present",
+    "LAB-02": "A single two-byte sequence counter is present",
+    "LAB-03": "Synthetic transaction type matches purchase or refund fixture"
+  },
+  "coverage": {
+    "LAB-01": [
+      "TC-001.1",
+      "TC-002.1"
+    ],
+    "LAB-02": [
+      "TC-001.2",
+      "TC-002.2"
+    ],
+    "LAB-03": [
+      "TC-001.3",
+      "TC-002.3"
+    ]
+  },
+  "uncovered_requirements": [],
+  "cases": [
+    {
+      "id": "TC-001",
+      "title": "Synthetic purchase",
+      "passed": true,
+      "decode_error": null,
+      "inventory": [
+        {
+          "tag": "77",
+          "offset": 0,
+          "length": 17,
+          "constructed": true
+        },
+        {
+          "tag": "9F02",
+          "offset": 2,
+          "length": 6,
+          "constructed": false
+        },
+        {
+          "tag": "9F36",
+          "offset": 11,
+          "length": 2,
+          "constructed": false
+        },
+        {
+          "tag": "9C",
+          "offset": 16,
+          "length": 1,
+          "constructed": false
+        }
+      ],
+      "assertions": [
+        {
+          "id": "TC-001.1",
+          "requirement": "LAB-01",
+          "tag": "9F02",
+          "operation": "length",
+          "passed": true,
+          "reason": "Length 6; expected 6"
+        },
+        {
+          "id": "TC-001.2",
+          "requirement": "LAB-02",
+          "tag": "9F36",
+          "operation": "length",
+          "passed": true,
+          "reason": "Length 2; expected 2"
+        },
+        {
+          "id": "TC-001.3",
+          "requirement": "LAB-03",
+          "tag": "9C",
+          "operation": "equals",
+          "passed": true,
+          "reason": "Value matches"
+        }
+      ]
+    },
+    {
+      "id": "TC-002",
+      "title": "Synthetic refund",
+      "passed": false,
+      "decode_error": null,
+      "inventory": [
+        {
+          "tag": "77",
+          "offset": 0,
+          "length": 17,
+          "constructed": true
+        },
+        {
+          "tag": "9F02",
+          "offset": 2,
+          "length": 6,
+          "constructed": false
+        },
+        {
+          "tag": "9F36",
+          "offset": 11,
+          "length": 2,
+          "constructed": false
+        },
+        {
+          "tag": "9C",
+          "offset": 16,
+          "length": 1,
+          "constructed": false
+        }
+      ],
+      "assertions": [
+        {
+          "id": "TC-002.1",
+          "requirement": "LAB-01",
+          "tag": "9F02",
+          "operation": "length",
+          "passed": true,
+          "reason": "Length 6; expected 6"
+        },
+        {
+          "id": "TC-002.2",
+          "requirement": "LAB-02",
+          "tag": "9F36",
+          "operation": "length",
+          "passed": true,
+          "reason": "Length 2; expected 2"
+        },
+        {
+          "id": "TC-002.3",
+          "requirement": "LAB-03",
+          "tag": "9C",
+          "operation": "equals",
+          "passed": false,
+          "reason": "Value differs (values omitted)"
+        }
+      ]
+    }
+  ]
+}

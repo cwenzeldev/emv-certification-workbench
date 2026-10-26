@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "synthetic": true,
+  "requirements": {
+    "LAB-01": "A single six-byte amount is present",
+    "LAB-02": "A single two-byte sequence counter is present",
+    "LAB-03": "Synthetic transaction type matches purchase or refund fixture"
+  },
+  "cases": [
+    {
+      "id": "TC-001",
+      "title": "Synthetic purchase",
+      "tlv": "77119F02060000000012509F360200019C0100",
+      "assertions": [
+        {
+          "requirement": "LAB-01",
+          "tag": "9F02",
+          "op": "length",
+          "expected": 6
+        },
+        {
+          "requirement": "LAB-02",
+          "tag": "9F36",
+          "op": "length",
+          "expected": 2
+        },
+        {
+          "requirement": "LAB-03",
+          "tag": "9C",
+          "op": "equals",
+          "expected": "00"
+        }
+      ]
+    },
+    {
+      "id": "TC-002",
+      "title": "Synthetic refund",
+      "tlv": "77119F02060000000005009F360200029C0100",
+      "assertions": [
+        {
+          "requirement": "LAB-01",
+          "tag": "9F02",
+          "op": "length",
+          "expected": 6
+        },
+        {
+          "requirement": "LAB-02",
+          "tag": "9F36",
+          "op": "length",
+          "expected": 2
+        },
+        {
+          "requirement": "LAB-03",
+          "tag": "9C",
+          "op": "equals",
+          "expected": "20"
+        }
+      ]
+    }
+  ]
+}
