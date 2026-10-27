@@ -15,8 +15,14 @@ def main(argv=None):
     runner = commands.add_parser("run", help="Execute a synthetic JSON plan")
     runner.add_argument("plan", type=Path)
     runner.add_argument("--out", type=Path, default=Path("artifacts"))
+    dashboard = commands.add_parser("serve", help="Open a local interactive dashboard")
+    dashboard.add_argument("--port", type=int, default=8765)
     args = parser.parse_args(argv)
     try:
+        if args.command == "serve":
+            from .dashboard import serve
+            serve(args.port)
+            return 0
         if args.command == "decode":
             print(json.dumps(inventory(decode(args.hex)), indent=2))
             return 0

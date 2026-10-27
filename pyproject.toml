@@ -14,3 +14,6 @@ emv-workbench = "emv_workbench.__main__:main"
 
 [tool.setuptools.packages.find]
 include = ["emv_workbench*"]
+
+[tool.setuptools.package-data]
+emv_workbench = ["static/*.html", "samples.json"]

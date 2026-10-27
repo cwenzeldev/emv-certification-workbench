@@ -4,6 +4,23 @@ A local Python toolkit for practicing payment-terminal **pre-certification evide
 
 **Learning project only.** This is not an EMVCo-qualified tool, an accredited laboratory service, a payment kernel, or official certification. A green report means the supplied lab assertions passed; it does not establish EMV compliance. No terminal, acquirer, payment network, or live payment is contacted.
 
+## Interactive dashboard
+
+Start the local app from the repository root:
+
+```sh
+python3 -m emv_workbench serve
+```
+
+Open **http://127.0.0.1:8765** in your browser. Use `--port 9000` for another port.
+
+- **Transaction lab:** run the sample purchase/refund plan, edit a case's TLV data, or choose **Try a failing refund** to see a deliberate mismatch. Edits clear the old results until you rerun.
+- **TLV decoder:** paste synthetic hex and inspect tags, offsets, byte lengths, and containers.
+- **Test plan editor:** edit requirements and assertions as JSON, then apply and run.
+- **Evidence downloads:** save JSON or an offline HTML report from the last completed run.
+
+The dashboard calls the same Python parser and assertion engine as the CLI. Data stays in browser memory and local request processing; the dashboard does not automatically save plans or reports to disk. Download evidence before closing the session. Use only synthetic data. It binds to loopback, checks the Host header and requires a session token for POST requests. This standard-library development server is for local use, not public hosting. Stop it with Ctrl+C. Browser interaction requires a modern browser with JavaScript enabled.
+
 ## Quick start
 
 Python 3.10+; runtime and tests use only the standard library. From the repository root:
